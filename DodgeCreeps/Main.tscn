@@ -14,6 +14,14 @@ _data = {
 script = ExtResource( 1 )
 Enemy = ExtResource( 4 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 904.0
+color = Color( 0.0392157, 0.435294, 0.572549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Jugador" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 416 )
 
