@@ -1,0 +1,3 @@
+# Tutorialess Platformer
+
+TL;DR. Trying to do a platformer game without watching or reading any Godot tutorial, I can just read the documentation for specific questions. The logic I'll be using comes from some old examples I made with [Shaun Spalding's Game Maker Platformer Videos](https://www.youtube.com/c/ShaunSpalding/featured) (Kinda cheating here, but they're from a totally different engine and I already know how they work, so it is valid). Fair to say **I may have a bad time**
