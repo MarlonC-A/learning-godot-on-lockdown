@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="HolaMundo"
+config/name="00_HolaMundo"
 run/main_scene="res://HolaMundo.tscn"
 config/icon="res://icon.png"
 
