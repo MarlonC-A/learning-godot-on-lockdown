@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Jugador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ManejadorBalas.gd" type="Script" id=2]
+[ext_resource path="res://Principal.gd" type="Script" id=3]
 
 [node name="Principal" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Jugador" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 320 )
+
+[node name="ManejadorBalas" type="Node2D" parent="."]
+script = ExtResource( 2 )
