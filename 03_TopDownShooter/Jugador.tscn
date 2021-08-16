@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/topdown-shooter/Spritesheet/spritesheet_characters.png" type="Texture" id=1]
+[ext_resource path="res://assets/Jugador.png" type="Texture" id=1]
 [ext_resource path="res://Jugador.gd" type="Script" id=2]
 [ext_resource path="res://Bala.tscn" type="PackedScene" id=3]
 
@@ -21,4 +21,4 @@ region_rect = Rect2( 0, 0, 56, 43 )
 shape = SubResource( 1 )
 
 [node name="PuntaPistola" type="Position2D" parent="."]
-position = Vector2( 42.3707, 9.44811 )
+position = Vector2( 38.537, 0 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/kenney_topdowntanksredux/Spritesheet/onlyObjects_default.png" type="Texture" id=1]
+[ext_resource path="res://assets/Bala.png" type="Texture" id=1]
 [ext_resource path="res://Bala.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -12,8 +12,8 @@ script = ExtResource( 2 )
 rapidez = 30
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
-region_enabled = true
 region_rect = Rect2( 198, 46, 4, 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
