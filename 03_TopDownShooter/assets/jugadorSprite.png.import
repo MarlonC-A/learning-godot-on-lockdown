@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bala.png-9dedb6af4bd8510d149ee7f291fcb80d.stex"
+path="res://.import/jugadorSprite.png-9907a15d0dee3a2c402fb66ce017c258.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bala.png"
-dest_files=[ "res://.import/Bala.png-9dedb6af4bd8510d149ee7f291fcb80d.stex" ]
+source_file="res://assets/jugadorSprite.png"
+dest_files=[ "res://.import/jugadorSprite.png-9907a15d0dee3a2c402fb66ce017c258.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jugador.png-4a4f3a85c9f0e329299dbad8a0b692a9.stex"
+path="res://.import/fogonazoSprite.png-45ba4cfd12146cfe7af5eb1e869638d8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugador.png"
-dest_files=[ "res://.import/Jugador.png-4a4f3a85c9f0e329299dbad8a0b692a9.stex" ]
+source_file="res://assets/fogonazoSprite.png"
+dest_files=[ "res://.import/fogonazoSprite.png-45ba4cfd12146cfe7af5eb1e869638d8.stex" ]
 
 [params]
 

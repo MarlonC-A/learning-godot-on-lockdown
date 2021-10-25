@@ -1,11 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/Jugador.png" type="Texture" id=1]
+[ext_resource path="res://assets/jugadorSprite.png" type="Texture" id=1]
 [ext_resource path="res://Jugador.gd" type="Script" id=2]
 [ext_resource path="res://Bala.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fogonazoSprite.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.55612, 19.6455 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fogonazo"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 0.2, 1 ) ]
+}
 
 [node name="Jugador" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -22,3 +52,17 @@ shape = SubResource( 1 )
 
 [node name="PuntaPistola" type="Position2D" parent="."]
 position = Vector2( 38.537, 0 )
+
+[node name="CooldownAtaque" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Fogonazo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 48.9994, 2.38419e-07 )
+rotation = -1.5708
+scale = Vector2( 0.2, 1 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fogonazo"]
+anims/fogonazo = SubResource( 2 )

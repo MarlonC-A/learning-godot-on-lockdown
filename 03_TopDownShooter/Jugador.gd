@@ -13,6 +13,8 @@ func _ready():
 
 
 onready var puntaPistola = $PuntaPistola;
+onready var cooldownAtaque = $CooldownAtaque;
+onready var animacionFogonazo = $Fogonazo/AnimationPlayer;
 
 func _process(delta):
 	var direccionMov := Vector2.ZERO;
@@ -22,14 +24,20 @@ func _process(delta):
 	move_and_slide(direccionMov * velocidad);
 	look_at(get_global_mouse_position());
 
-
-func _unhandled_input(evento):
-	if evento.is_action_pressed("dispara"):
+	if Input.is_action_pressed("dispara"):
 		dispara();
 
 
-func dispara():
-	var balaInstancia = Bala.instance();
-	var dirBala := (get_global_mouse_position() - self.global_position).normalized();
-	emit_signal("balaDisparada", balaInstancia, puntaPistola.global_position, dirBala);
+#func _unhandled_input(evento):
+#	if evento.is_action_pressed("dispara"):
+#		dispara();
 
+func dispara():
+	if cooldownAtaque.is_stopped():
+		var balaInstancia = Bala.instance();
+		var dirBala := (get_global_mouse_position() - self.global_position).normalized();
+		emit_signal("balaDisparada", balaInstancia, puntaPistola.global_position, dirBala);
+		cooldownAtaque.start();
+		animacionFogonazo.play("fogonazo");
+	else:
+		pass;
