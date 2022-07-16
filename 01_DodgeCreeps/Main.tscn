@@ -51,6 +51,7 @@ curve = SubResource( 1 )
 [node name="MobSpawnLoc" type="PathFollow2D" parent="MobPath"]
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+
 [connection signal="hit" from="Jugador" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
