@@ -18,5 +18,5 @@ func _process(delta):
 	salto = int(Input.is_action_just_pressed("saltar"));
 	var nuevaVelocidad = velocidad + gravedad - fuerzaSalto*salto;
 	velocidad = clamp(nuevaVelocidad, vTerminal*-1, vTerminal);
-	move_and_slide(Vector2(0,velocidad), Vector2(0,1));
+	position.y += velocidad*delta;
 	set_rotation_degrees(velocidad*60/200);

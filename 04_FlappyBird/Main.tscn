@@ -11,6 +11,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 144, 256 )
 
 [node name="Pajaro" parent="." instance=ExtResource( 1 )]
+position = Vector2( -35, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
