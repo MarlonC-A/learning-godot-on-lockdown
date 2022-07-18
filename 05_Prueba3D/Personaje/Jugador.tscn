@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Personaje/ModeloArticulado.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personaje/Jugador.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.32769
+height = 1.63306
+
+[node name="KinematicBody" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.19742, 0 )
+shape = SubResource( 1 )
+
+[node name="SpringArm" type="SpringArm" parent="."]
+transform = Transform( 0.906308, 0.123562, -0.404152, 0, 0.956305, 0.292372, 0.422618, -0.264979, 0.866706, -3, 4.682, 5.929 )
+
+[node name="Camera" type="Camera" parent="SpringArm"]
+
+[node name="ModeloArticulado" parent="." instance=ExtResource( 1 )]
