@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Personaje/ModeloArticulado.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Personaje/Jugador.gd" type="Script" id=2]
+[ext_resource path="res://Personaje/BrazoResorte.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape" id=1]
-radius = 1.32769
-height = 1.63306
+[sub_resource type="CylinderShape" id=5]
+height = 4.2
 
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Robot_Idle"
@@ -21,13 +21,16 @@ start_node = "Robot_Idle"
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.19742, 0 )
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 2.09742, 0 )
+shape = SubResource( 5 )
 
-[node name="SpringArm" type="SpringArm" parent="."]
+[node name="BrazoResorte" type="SpringArm" parent="."]
 transform = Transform( -0.866026, -0.0868241, 0.492404, 0, 0.984808, 0.173648, -0.5, 0.150384, -0.852868, 3.825, 4.164, -4.914 )
+spring_length = 7.0
+margin = 0.2
+script = ExtResource( 3 )
 
-[node name="Camera" type="Camera" parent="SpringArm"]
+[node name="Camera" type="Camera" parent="BrazoResorte"]
 
 [node name="ModeloArticulado" parent="." instance=ExtResource( 1 )]
 
