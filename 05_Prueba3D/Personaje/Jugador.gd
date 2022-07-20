@@ -10,8 +10,10 @@ var _vectorSnap := Vector3.DOWN;
 onready var _brazoResorte: SpringArm = $BrazoResorte;
 onready var _modelo: Spatial = $ModeloArticulado; 
 
+var maquinaEstadosAnimacion;
+
 func _ready():
-	pass
+	maquinaEstadosAnimacion = $AnimationTree.get("parameters/playback");
 
 func _physics_process(delta):
 	var direccionMov := Vector3.ZERO;
@@ -35,13 +37,19 @@ func _physics_process(delta):
 		
 	_velocidad = move_and_slide_with_snap(_velocidad,_vectorSnap,Vector3.UP,true);
 	
-	var _velocidadHorizontal = Vector2(_velocidad.x,_velocidad.z);
+	var _velocidadHorizontal := Vector2(_velocidad.x,_velocidad.z);
 	
-	if _velocidadHorizontal.length() > 0.2:
+	if direccionMov.length() > 0.2:
 		var anguloViejo = Quat(transform.basis);
 		var anguloNuevo = Quat(Vector3(0,1,0),Vector2(direccionMov.z,direccionMov.x).angle());
 		var anguloMedio = anguloViejo.slerp(anguloNuevo,0.5);
 		transform.basis = Basis(anguloMedio);
 		
+		if _velocidadHorizontal.length() > 0.5:
+			maquinaEstadosAnimacion.travel("Robot_Running");
+			
+	if _velocidad.length() < 0.5:
+		maquinaEstadosAnimacion.travel("Robot_Idle");
+	
 func _process(delta):
 	_brazoResorte.translation = translation;
