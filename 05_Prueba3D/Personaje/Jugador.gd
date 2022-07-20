@@ -35,7 +35,9 @@ func _physics_process(delta):
 		
 	_velocidad = move_and_slide_with_snap(_velocidad,_vectorSnap,Vector3.UP,true);
 	
-	if _velocidad.length() > 0.2:
+	var _velocidadHorizontal = Vector2(_velocidad.x,_velocidad.z);
+	
+	if _velocidadHorizontal.length() > 0.2:
 		var anguloViejo = Quat(transform.basis);
 		var anguloNuevo = Quat(Vector3(0,1,0),Vector2(direccionMov.z,direccionMov.x).angle());
 		var anguloMedio = anguloViejo.slerp(anguloNuevo,0.5);

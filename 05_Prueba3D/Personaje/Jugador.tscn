@@ -4,8 +4,9 @@
 [ext_resource path="res://Personaje/Jugador.gd" type="Script" id=2]
 [ext_resource path="res://Personaje/BrazoResorte.gd" type="Script" id=3]
 
-[sub_resource type="CylinderShape" id=5]
-height = 4.2
+[sub_resource type="CapsuleShape" id=5]
+radius = 1.25745
+height = 2.0
 
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Robot_Idle"
@@ -18,19 +19,25 @@ start_node = "Robot_Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
 [node name="Jugador" type="KinematicBody"]
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 2.09742, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.24564, 0 )
 shape = SubResource( 5 )
 
 [node name="BrazoResorte" type="SpringArm" parent="."]
-transform = Transform( -0.866026, -0.0868241, 0.492404, 0, 0.984808, 0.173648, -0.5, 0.150384, -0.852868, 3.825, 4.164, -4.914 )
-spring_length = 7.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.33828, 0 )
+collision_mask = 2
+spring_length = 10.0
 margin = 0.2
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="BrazoResorte"]
+keep_aspect = 0
+
+[node name="PivoteCamara" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.33828, 0 )
 
 [node name="ModeloArticulado" parent="." instance=ExtResource( 1 )]
 

@@ -3132,7 +3132,7 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="BoneAttachment 2" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.997931, -0.0505244, -0.0397531, 0.052055, 0.997902, 0.0384582, 0.0377266, -0.040448, 0.998468, -0.0171258, 2.75052, -0.0112466 )
+transform = Transform( 0.997931, -0.0505244, -0.0397531, 0.052055, 0.997902, 0.0384582, 0.0377266, -0.040448, 0.998469, -0.0171258, 3.00551, -0.0112466 )
 bone_name = "head"
 
 [node name="Head" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 2"]
@@ -3143,7 +3143,7 @@ material/1 = null
 material/2 = null
 
 [node name="BoneAttachment 3" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.0367195, 0.426699, 0.903649, -0.175171, -0.887509, 0.426196, 0.983852, -0.173943, 0.0421564, 0.617283, 2.0754, -0.0168432 )
+transform = Transform( 0.0367196, 0.426699, 0.903649, -0.175171, -0.887509, 0.426196, 0.983852, -0.173943, 0.0421563, 0.617283, 2.33039, -0.0168432 )
 bone_name = "upper_arm_l"
 
 [node name="ArmL" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 3"]
@@ -3152,7 +3152,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="BoneAttachment 4" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( -0.911603, 0.411073, -1.73284e-06, -0.411073, -0.911602, -1.21444e-06, -2.21655e-06, -7.30157e-07, 0.999999, 0.582738, 2.152, -0.0168431 )
+transform = Transform( -0.911603, 0.411073, -1.72639e-06, -0.411072, -0.911602, -1.2219e-06, -2.21282e-06, -7.37607e-07, 0.999999, 0.582738, 2.407, -0.0168431 )
 bone_name = "shoulder_l"
 
 [node name="ShoulderL" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 4"]
@@ -3161,7 +3161,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="BoneAttachment 5" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.209988, -0.437155, -0.874529, -0.256283, -0.887806, 0.382255, -0.943516, 0.143857, -0.298464, -0.681735, 2.06026, -0.0168432 )
+transform = Transform( 0.209988, -0.437155, -0.874529, -0.256282, -0.887806, 0.382255, -0.943516, 0.143857, -0.298464, -0.681735, 2.31525, -0.0168432 )
 bone_name = "upper_arm_r"
 
 [node name="ArmR" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 5"]
@@ -3170,7 +3170,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="BoneAttachment 6" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( -0.898186, -0.439616, -1.32554e-06, 0.439616, -0.898185, -2.30968e-07, -1.06916e-06, -7.59959e-07, 1, -0.636816, 2.15203, -0.0168431 )
+transform = Transform( -0.898186, -0.439616, -1.32219e-06, 0.439616, -0.898185, -2.30968e-07, -1.06543e-06, -7.59959e-07, 1, -0.636816, 2.40702, -0.0168431 )
 bone_name = "shoulder_r"
 
 [node name="ShoulderR" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 6"]
@@ -3179,7 +3179,7 @@ mesh = SubResource( 6 )
 material/0 = null
 
 [node name="BoneAttachment 7" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.984922, -0.0813839, -0.152664, 0.0122004, -0.847577, 0.530534, -0.172568, -0.524414, -0.833809, 0.709033, 0.811052, 0.348506 )
+transform = Transform( 0.985174, -0.0355626, -0.167837, 0.0100386, -0.96466, 0.263316, -0.171265, -0.261109, -0.95001, 0.666523, 0.91976, 0.104232 )
 bone_name = "lower_leg_l"
 
 [node name="LowerLegL" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 7"]
@@ -3188,7 +3188,7 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="BoneAttachment 8" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.984922, 0.128863, -0.11543, 0.0122002, -0.717283, -0.696677, -0.172568, 0.684764, -0.708057, 0.630296, 1.24932, -0.0698894 )
+transform = Transform( 0.985174, 0.0592895, -0.160993, 0.0100385, -0.956701, -0.290909, -0.171266, 0.284975, -0.943126, 0.630296, 1.50431, -0.0698894 )
 bone_name = "upper_leg_l"
 
 [node name="LegL" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 8"]
@@ -3197,7 +3197,7 @@ mesh = SubResource( 8 )
 material/0 = null
 
 [node name="BoneAttachment 9" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.960561, 0.136831, 0.242079, -0.012923, -0.847658, 0.530388, 0.27777, -0.512615, -0.812462, -0.767026, 0.811127, 0.337558 )
+transform = Transform( 0.960966, 0.0629107, 0.269422, -0.0106351, -0.964691, 0.263182, 0.276461, -0.255786, -0.926376, -0.698448, 0.919787, 0.0992934 )
 bone_name = "lower_leg_r"
 
 [node name="LowerLegR" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 9"]
@@ -3206,7 +3206,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="BoneAttachment 10" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 0.96056, -0.202484, 0.190594, -0.0129226, -0.71716, -0.69679, 0.277771, 0.666845, -0.69151, -0.643307, 1.24932, -0.0698895 )
+transform = Transform( 0.960966, -0.0902468, 0.261537, -0.010635, -0.956655, -0.291039, 0.276461, 0.276892, -0.920287, -0.643307, 1.50431, -0.0698895 )
 bone_name = "upper_leg_r"
 
 [node name="LegR" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 10"]
@@ -3215,7 +3215,7 @@ mesh = SubResource( 10 )
 material/0 = null
 
 [node name="BoneAttachment 11" type="BoneAttachment" parent="RobotArmature/Skeleton"]
-transform = Transform( 1, 0, 7.15256e-07, 0, 1, 0, -7.15256e-07, 0, 1, 0.00205059, 1.15309, 0.112672 )
+transform = Transform( 1, 0, 7.15256e-07, 0, 1, 0, -7.15256e-07, 0, 1, 0.00205059, 1.40808, 0.112672 )
 bone_name = "body"
 
 [node name="Torso" type="MeshInstance" parent="RobotArmature/Skeleton/BoneAttachment 11"]

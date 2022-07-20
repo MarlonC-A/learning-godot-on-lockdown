@@ -1,16 +1,23 @@
 extends SpringArm
 
+export var sensibilidadMouse := 0.5;
+var rotacionCamara : Vector2;
+var altura = 0;
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_as_toplevel(true);
+	altura = translation.y;
 
+func _process(delta):
+	rotacionCamara.x = clamp(rotacionCamara.x,-90,30);
+	rotacionCamara.y = wrapf(rotacionCamara.y,0,360);
+	
+	rotation_degrees.x = rotacionCamara.x;
+	rotation_degrees.y = rotacionCamara.y;
+	
+	translation.y += altura;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotacionCamara.x -= event.relative.y * sensibilidadMouse;
+		rotacionCamara.y -= event.relative.x * sensibilidadMouse;
