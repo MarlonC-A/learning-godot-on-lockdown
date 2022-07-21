@@ -9,6 +9,10 @@ func _ready():
 	altura = translation.y;
 
 func _process(delta):
+	
+	rotacionCamara.y += Input.get_action_strength("camaraIzquierda") - Input.get_action_strength("camaraDerecha");
+	rotacionCamara.x += Input.get_action_strength("camaraAbajo") - Input.get_action_strength("camaraArriba");
+	
 	rotacionCamara.x = clamp(rotacionCamara.x,-90,30);
 	rotacionCamara.y = wrapf(rotacionCamara.y,0,360);
 	

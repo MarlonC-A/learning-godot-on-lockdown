@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Personaje/Jugador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MaterialEntorno.tres" type="Material" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -12,29 +13,82 @@ data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0,
 [sub_resource type="ConcavePolygonShape" id=4]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
+[sub_resource type="PrismMesh" id=12]
+
+[sub_resource type="ConcavePolygonShape" id=13]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="ConcavePolygonShape" id=9]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="PrismMesh" id=10]
+
+[sub_resource type="ConcavePolygonShape" id=11]
+data = PoolVector3Array( 0, 1, 1, 1, -1, 1, -1, -1, 1, 0, 1, -1, -1, -1, -1, 1, -1, -1, 0, 1, 1, 0, 1, -1, 1, -1, 1, 0, 1, -1, 1, -1, -1, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, -1, -1, 0, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
 [node name="Mundo" type="Spatial"]
 
 [node name="Jugador" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0207332, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0207332, -6.2658 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Bloques" type="Node" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Bloques"]
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0 )
 mesh = SubResource( 1 )
+skeleton = NodePath("../..")
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+[node name="StaticBody" type="StaticBody" parent="Bloques/MeshInstance"]
 collision_layer = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Bloques/MeshInstance/StaticBody"]
 shape = SubResource( 2 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8.39448 )
+[node name="MeshInstance2" type="MeshInstance" parent="Bloques"]
+transform = Transform( 3.279, 0, 0, 0, 1, 0, 0, 0, 3.135, -3.20038, 1, 6.34136 )
 mesh = SubResource( 3 )
-material/0 = null
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+[node name="StaticBody" type="StaticBody" parent="Bloques/MeshInstance2"]
 collision_layer = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Bloques/MeshInstance2/StaticBody"]
 shape = SubResource( 4 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Bloques"]
+transform = Transform( 2.823, 0, 0, 0, 1, 0, 0, 0, 1, 0.0724025, 0.988448, 6.24039 )
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Bloques/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Bloques/MeshInstance3/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Bloques"]
+transform = Transform( 1, 0, 0, 0, 2.942, 0, 0, 0, 1, -5.54753, 2.93724, 4.18944 )
+mesh = SubResource( 8 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Bloques/MeshInstance4"]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Bloques/MeshInstance4/StaticBody"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Bloques"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.55015, 1.01801, 3.21382 )
+mesh = SubResource( 10 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Bloques/MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Bloques/MeshInstance5/StaticBody"]
+shape = SubResource( 11 )
