@@ -71,7 +71,7 @@ material/0 = ExtResource( 2 )
 shape = SubResource( 13 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Bloques"]
-transform = Transform( 1, 0, 0, 0, 2.942, 0, 0, 0, 1, -5.54753, 2.93724, 4.18944 )
+transform = Transform( 1, 0, 0, 0, 2.942, 0, 0, 0, 1, -5.475, 2.937, 4.189 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )

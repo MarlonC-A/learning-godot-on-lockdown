@@ -5,8 +5,9 @@
 [ext_resource path="res://Personaje/BrazoResorte.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=12]
-radius = 0.794217
-height = 2.73536
+margin = 0.001
+radius = 0.5
+height = 3.37
 
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Robot_Idle"
@@ -16,14 +17,15 @@ animation = "Robot_Running"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id=3]
 states/Robot_Idle/node = SubResource( 2 )
 states/Robot_Idle/position = Vector2( 157, 101 )
 states/Robot_Running/node = SubResource( 8 )
 states/Robot_Running/position = Vector2( 367.925, 101 )
-transitions = [ "Robot_Idle", "Robot_Running", SubResource( 10 ), "Robot_Running", "Robot_Idle", SubResource( 11 ) ]
+transitions = [ "Robot_Idle", "Robot_Running", SubResource( 10 ), "Robot_Running", "Robot_Idle", SubResource( 13 ) ]
 start_node = "Robot_Idle"
 graph_offset = Vector2( -160.075, 0 )
 
@@ -34,7 +36,7 @@ collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Torso" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 2.18076, 0 )
+transform = Transform( 1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 2.171, 0 )
 shape = SubResource( 12 )
 
 [node name="BrazoResorte" type="SpringArm" parent="."]
@@ -51,6 +53,7 @@ keep_aspect = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.33828, 0 )
 
 [node name="ModeloArticulado" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.228843 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 3 )

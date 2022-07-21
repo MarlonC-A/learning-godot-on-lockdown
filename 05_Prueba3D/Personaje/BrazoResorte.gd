@@ -1,6 +1,6 @@
 extends SpringArm
 
-export var sensibilidadMouse := 0.5;
+export var sensibilidadMouse := 0.3;
 var rotacionCamara : Vector2;
 var altura = 0;
 
