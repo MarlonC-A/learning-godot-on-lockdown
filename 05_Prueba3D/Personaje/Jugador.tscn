@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Personaje/ModeloArticulado.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Personaje/Jugador.gd" type="Script" id=2]
@@ -9,25 +9,53 @@ margin = 0.001
 radius = 0.5
 height = 3.37
 
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Robot_Dance"
+
 [sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Robot_Idle"
 
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Robot_Jump"
+
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Robot_Running"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Robot_WalkJump"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
 [sub_resource type="AnimationNodeStateMachine" id=3]
+states/Robot_Dance/node = SubResource( 22 )
+states/Robot_Dance/position = Vector2( 157, -0.599998 )
 states/Robot_Idle/node = SubResource( 2 )
 states/Robot_Idle/position = Vector2( 157, 101 )
+states/Robot_Jump/node = SubResource( 14 )
+states/Robot_Jump/position = Vector2( 157, 199 )
 states/Robot_Running/node = SubResource( 8 )
 states/Robot_Running/position = Vector2( 367.925, 101 )
-transitions = [ "Robot_Idle", "Robot_Running", SubResource( 10 ), "Robot_Running", "Robot_Idle", SubResource( 13 ) ]
+states/Robot_WalkJump/node = SubResource( 17 )
+states/Robot_WalkJump/position = Vector2( 367.925, 199 )
+transitions = [ "Robot_Idle", "Robot_Running", SubResource( 10 ), "Robot_Running", "Robot_Idle", SubResource( 13 ), "Robot_Idle", "Robot_Jump", SubResource( 15 ), "Robot_Jump", "Robot_Idle", SubResource( 16 ), "Robot_WalkJump", "Robot_Running", SubResource( 20 ), "Robot_Running", "Robot_WalkJump", SubResource( 21 ), "Robot_Dance", "Robot_Idle", SubResource( 24 ), "Robot_Idle", "Robot_Dance", SubResource( 25 ) ]
 start_node = "Robot_Idle"
-graph_offset = Vector2( -160.075, 0 )
+graph_offset = Vector2( -369.695, -74.6 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
