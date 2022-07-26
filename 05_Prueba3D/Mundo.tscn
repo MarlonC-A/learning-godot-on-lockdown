@@ -37,6 +37,7 @@ fog_enabled = true
 fog_sun_color = Color( 1, 1, 1, 1 )
 fog_depth_curve = 0.933032
 dof_blur_far_enabled = true
+dof_blur_far_distance = 21.71
 
 [node name="Mundo" type="Spatial"]
 
