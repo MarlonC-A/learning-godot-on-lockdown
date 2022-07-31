@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Jugador/JugadorRigged.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Jugador/Jugador.tscn" type="PackedScene" id=1]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -13,8 +13,10 @@ _data = {
 [node name="Path" type="Path" parent="."]
 curve = SubResource( 1 )
 
-[node name="PathFollow" type="PathFollow" parent="Path"]
-transform = Transform( -0.717922, 0.0681543, -0.692777, 0.0950681, 0.995469, -0.000586228, 0.689598, -0.0662821, -0.72115, -6.75213, 0, -4.17012 )
+[node name="Jugador" parent="Path" instance=ExtResource( 1 )]
+transform = Transform( 0.505266, 0, 0.862964, 0, 1, 0, -0.862964, 0, 0.505266, -6.93629, 0, -4.25163 )
+patrol_path = NodePath("..")
 
-[node name="Character" parent="Path/PathFollow" instance=ExtResource( 1 )]
-transform = Transform( -0.910272, 0.13504, -0.391371, 0.15582, 0.987548, -0.0216687, 0.383569, -0.080708, -0.919978, 0, 0, 0 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46062, 8.40252 )
+fov = 100.0
