@@ -1,17 +1,26 @@
 extends KinematicBody
 
-var move_speed = 100
 export (NodePath) var patrol_path
 var patrolPoints
 var patrolIndex = 0
-var _velocidadHorizontal = Vector2.ZERO
-var _velocidad = Vector3.ZERO;
-var posicion2D = Vector2.ZERO;
-var punto2D = Vector2.ZERO;
-var target = Vector3.ZERO;
-var distancia2D = 0;
-var thresholdDistancia = 1;
 
+var moveSpeed = 10
+var tempSpeed = moveSpeed;
+var remainingSpeed = moveSpeed;
+
+var _velocidad = Vector3.ZERO;
+var _velocidadHorizontal = Vector2.ZERO
+
+var posicion2D = Vector2.ZERO;
+
+var objetivo = Vector3.ZERO;
+var objetivo2D = Vector2.ZERO;
+var vectorObjetivo = Vector2.ZERO;
+var dirObjetivo = Vector2.ZERO;
+var distObjetivo = 0;
+
+var thresholdDistancia = 1;
+var sigueAvanzando = true;
 
 func _ready():
 	if patrol_path:
@@ -20,37 +29,41 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if !patrol_path or !(patrolIndex < patrolPoints.size() - 1):
-		return;
+	#if !patrol_path or !(patrolIndex < patrolPoints.size() - 1):
+	#	return;
+	sigueAvanzando = true
+	remainingSpeed = moveSpeed;
 	
-	target = patrolPoints[patrolIndex];
-	posicion2D = Vector2(translation.x,translation.z);
-	punto2D = Vector2(target.x,target.z);
-	distancia2D = (posicion2D - punto2D).length();
+	while sigueAvanzando:
 	
-	if distancia2D < thresholdDistancia:
-		patrolIndex += 1;
-		target = patrolPoints[patrolIndex];
-		punto2D = Vector2(target.x,target.z);
-	
-	var vecToTarget = (punto2D - posicion2D);
-	var dirToTarget = vecToTarget.normalized();
-	var distToTarget = vecToTarget.length();
-	
-	var overshoot = move_speed * delta > distToTarget;
-	
-	if overshoot:
-		var tempSpeed = distToTarget / delta;
-		_velocidadHorizontal = dirToTarget * tempSpeed;
-	else:
-		_velocidadHorizontal = dirToTarget * move_speed;
-	
-	print (_velocidadHorizontal.length());
-	
-	_velocidad.x = _velocidadHorizontal.x;
-	_velocidad.z = _velocidadHorizontal.y;
-	
-	_velocidad = move_and_slide(_velocidad);
+		objetivo = patrolPoints[patrolIndex];
+		posicion2D = Vector2(translation.x,translation.z);
+		objetivo2D = Vector2(objetivo.x,objetivo.z);
+		distObjetivo = (posicion2D - objetivo2D).length();
+		
+		if distObjetivo < thresholdDistancia:
+			patrolIndex = wrapi(patrolIndex + 1, 0, patrolPoints.size() - 2);
+			objetivo = patrolPoints[patrolIndex];
+			objetivo2D = Vector2(objetivo.x,objetivo.z);
+		
+		vectorObjetivo = (objetivo2D - posicion2D);
+		dirObjetivo = vectorObjetivo.normalized();
+		distObjetivo = vectorObjetivo.length();
+		
+		var overshoot = remainingSpeed * delta > distObjetivo;
+		
+		if overshoot:
+			tempSpeed = distObjetivo / delta;
+			_velocidadHorizontal = dirObjetivo * tempSpeed;
+			remainingSpeed -= tempSpeed;
+		else:
+			_velocidadHorizontal = dirObjetivo * remainingSpeed;
+			sigueAvanzando = false;
+		
+		_velocidad.x = _velocidadHorizontal.x;
+		_velocidad.z = _velocidadHorizontal.y;
+		
+		_velocidad = move_and_slide(_velocidad);
 
 
 #func _process(delta):

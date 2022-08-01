@@ -18,5 +18,5 @@ transform = Transform( 0.505266, 0, 0.862964, 0, 1, 0, -0.862964, 0, 0.505266, -
 patrol_path = NodePath("..")
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46062, 8.40252 )
+transform = Transform( 1, 0, 0, 0, 0.960828, 0.277147, 0, -0.277147, 0.960828, -0.621247, 4.69621, 8.40252 )
 fov = 100.0
