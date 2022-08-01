@@ -1,38 +1,57 @@
 extends KinematicBody
 
-var move_speed = 10
+var move_speed = 100
 export (NodePath) var patrol_path
-var patrol_points
+var patrolPoints
 var patrolIndex = 0
-var velocity = Vector2.ZERO
+var _velocidadHorizontal = Vector2.ZERO
+var _velocidad = Vector3.ZERO;
 var posicion2D = Vector2.ZERO;
 var punto2D = Vector2.ZERO;
 var target = Vector3.ZERO;
 var distancia2D = 0;
+var thresholdDistancia = 1;
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	if patrol_path:
-		patrol_points = get_node(patrol_path).curve.get_baked_points()
+		patrolPoints = get_node(patrol_path).curve.get_baked_points()
+
 
 func _physics_process(delta):
-	if !patrol_path or !(patrolIndex < patrol_points.size() - 1):
+	
+	if !patrol_path or !(patrolIndex < patrolPoints.size() - 1):
 		return;
-	target = patrol_points[patrolIndex];
+	
+	target = patrolPoints[patrolIndex];
 	posicion2D = Vector2(translation.x,translation.z);
 	punto2D = Vector2(target.x,target.z);
 	distancia2D = (posicion2D - punto2D).length();
 	
-	if distancia2D < 1:
-		
-		patrolIndex = patrolIndex + 1;
-		target = patrol_points[patrolIndex];
-		
-	velocity = (target - translation).normalized() * move_speed
-	velocity = move_and_slide(velocity)
+	if distancia2D < thresholdDistancia:
+		patrolIndex += 1;
+		target = patrolPoints[patrolIndex];
+		punto2D = Vector2(target.x,target.z);
 	
+	var vecToTarget = (punto2D - posicion2D);
+	var dirToTarget = vecToTarget.normalized();
+	var distToTarget = vecToTarget.length();
 	
+	var overshoot = move_speed * delta > distToTarget;
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if overshoot:
+		var tempSpeed = distToTarget / delta;
+		_velocidadHorizontal = dirToTarget * tempSpeed;
+	else:
+		_velocidadHorizontal = dirToTarget * move_speed;
+	
+	print (_velocidadHorizontal.length());
+	
+	_velocidad.x = _velocidadHorizontal.x;
+	_velocidad.z = _velocidadHorizontal.y;
+	
+	_velocidad = move_and_slide(_velocidad);
+
+
 #func _process(delta):
 #	pass
