@@ -72,6 +72,9 @@ func _physics_process(delta):
 		_velocidad.x = _velocidadHorizontal.x;
 		_velocidad.z = _velocidadHorizontal.y;
 		
+		if abs(direccionMov) > 0.2:
+			look_at(objetivo,Vector3(0,1,0));
+		
 		_velocidad = move_and_slide(_velocidad);
 
 
