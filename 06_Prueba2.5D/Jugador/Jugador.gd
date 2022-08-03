@@ -2,9 +2,10 @@ extends KinematicBody
 
 export (NodePath) var patrol_path
 var patrolPoints
-var patrolIndex = 0
+var puntoObj = 0
 
-var moveSpeed = 10
+var speed = 10;
+var moveSpeed = speed;
 var tempSpeed = moveSpeed;
 var remainingSpeed = moveSpeed;
 
@@ -22,42 +23,50 @@ var distObjetivo = 0;
 var thresholdDistancia = 1;
 var sigueAvanzando = true;
 
+var puntoMaximo = 0;
+
 func _ready():
 	if patrol_path:
 		patrolPoints = get_node(patrol_path).curve.get_baked_points()
-
+		puntoMaximo = patrolPoints.size() - 1;
 
 func _physics_process(delta):
 	
-	#if !patrol_path or !(patrolIndex < patrolPoints.size() - 1):
+	var direccionMov = Input.get_action_strength("adelante") - Input.get_action_strength("atras");
+	moveSpeed = speed * direccionMov;
+	
+	#if !patrol_path or !(puntoObj < patrolPoints.size() - 1):
 	#	return;
 	sigueAvanzando = true
 	remainingSpeed = moveSpeed;
 	
 	while sigueAvanzando:
 	
-		objetivo = patrolPoints[patrolIndex];
+		objetivo = patrolPoints[puntoObj];
 		posicion2D = Vector2(translation.x,translation.z);
 		objetivo2D = Vector2(objetivo.x,objetivo.z);
-		distObjetivo = (posicion2D - objetivo2D).length();
+		distObjetivo = (objetivo2D - posicion2D).length();
 		
 		if distObjetivo < thresholdDistancia:
-			patrolIndex = wrapi(patrolIndex + 1, 0, patrolPoints.size() - 2);
-			objetivo = patrolPoints[patrolIndex];
+			puntoObj = clamp(puntoObj + sign(direccionMov), 0, puntoMaximo);
+			objetivo = patrolPoints[puntoObj];
 			objetivo2D = Vector2(objetivo.x,objetivo.z);
-		
+			
+			if (distObjetivo <= thresholdDistancia/10) and (puntoObj == 0 or puntoObj == puntoMaximo):
+				sigueAvanzando = false;
+			
 		vectorObjetivo = (objetivo2D - posicion2D);
 		dirObjetivo = vectorObjetivo.normalized();
 		distObjetivo = vectorObjetivo.length();
 		
-		var overshoot = remainingSpeed * delta > distObjetivo;
+		var overshoot = abs(remainingSpeed * delta) > distObjetivo;
 		
 		if overshoot:
 			tempSpeed = distObjetivo / delta;
-			_velocidadHorizontal = dirObjetivo * tempSpeed;
-			remainingSpeed -= tempSpeed;
+			_velocidadHorizontal = dirObjetivo * abs(tempSpeed);
+			remainingSpeed -= tempSpeed * sign(moveSpeed);
 		else:
-			_velocidadHorizontal = dirObjetivo * remainingSpeed;
+			_velocidadHorizontal = dirObjetivo * abs(remainingSpeed);
 			sigueAvanzando = false;
 		
 		_velocidad.x = _velocidadHorizontal.x;
