@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GridMap3DNoColl.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 0.635157, 0.307406 )
+
+[node name="Spatial" instance=ExtResource( 1 )]
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Dirt_Single" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Dirt_Single/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Grass_Single" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Grass_Single/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Grass_Corner_Tall" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Grass_Corner_Tall/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Grass_Side_Tall" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Grass_Side_Tall/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Grass_Center_Tall" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Grass_Center_Tall/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Bridge_Modular" index="1"]
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Bridge_Modular/StaticBody" index="0"]
+depth = 2.0
+polygon = PoolVector2Array( 1, -1, 1, 1, -1, -1 )
+
+[node name="StaticBody" type="StaticBody" parent="Bridge_Modular_Center" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Bridge_Modular_Center/StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="Fence_Middle" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00611627, 6.27365 )
+visible = false
+
+[node name="StaticBody" type="StaticBody" parent="Fence_Middle" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.599759, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Fence_Middle/StaticBody" index="0"]
+shape = SubResource( 2 )
