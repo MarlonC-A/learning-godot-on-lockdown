@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entorno/MaterialesyModelos/Cube_Dirt_Single.gltf" type="PackedScene" id=1]
+[ext_resource path="res://Entorno/MaterialesyModelos/Cube_Grass_Single.gltf" type="PackedScene" id=2]
+[ext_resource path="res://Entorno/MaterialesyModelos/Cube_Grass_Side_Tall.gltf" type="PackedScene" id=3]
+[ext_resource path="res://Entorno/MaterialesyModelos/Cube_Grass_Center_Tall.gltf" type="PackedScene" id=4]
+[ext_resource path="res://Entorno/MaterialesyModelos/Cube_Grass_Corner_Tall.gltf" type="PackedScene" id=5]
+[ext_resource path="res://Entorno/MaterialesyModelos/Bridge_Modular.gltf" type="PackedScene" id=6]
+[ext_resource path="res://Entorno/MaterialesyModelos/Bridge_Modular_Center.gltf" type="PackedScene" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Cube_Dirt_Single" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[node name="Cube_Grass_Single" parent="." instance=ExtResource( 2 )]
+
+[node name="Cube_Grass_Corner_Tall" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="Cube_Grass_Side_Tall" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="Cube_Grass_Center_Tall" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+
+[node name="Bridge_Modular" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Bridge_Modular_Center" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
